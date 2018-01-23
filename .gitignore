@@ -1,3 +1,7 @@
 .DS_Store
+*.swo
+*~
 *.swp
-/assets/images/psds`
+/assets/images/psd
+.*.swp
+.*.swo
