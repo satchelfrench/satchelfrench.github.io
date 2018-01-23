@@ -1,0 +1,205 @@
+/** Normalize **/
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700'); /** google fonts import **/
+
+html {
+height:100%;
+width:100%;
+margin: 0 0 0 0;
+padding: 0;
+
+}
+
+body {
+margin: 0;
+padding: 0;
+max-height:100%;
+min-height: 600px;
+height:100%;
+width:100%;
+font-family: 'Quicksand', sans-serif;
+overflow-y: scroll;
+}
+
+/** Navigation **/
+
+nav {
+    position: absolute;
+    top:0;
+    min-height: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+nav > ul {
+    list-style-type: none;
+    display: inline-block;
+    width: 100%;
+    padding:0;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+
+nav a:visited{
+    color:black;
+}
+
+nav > ul > li {
+    display: inline-block;
+    width: 10%;
+}
+
+nav a:hover {
+    color: #6a7e8c;
+}
+
+.active-nav {
+    color: black !important;
+}
+
+/** hover slider underline **/ /** breaks at 890 width, needs media query **/
+
+
+#about:hover ~ hr {
+margin-left: 34.5%;
+}
+
+#projects:hover ~ hr {
+margin-left: 45%;
+}
+
+#blog:hover ~ hr {
+margin-left: 56%;
+}
+
+hr {
+height: .25rem;
+width: 10%;
+background: tomato;
+border: none;
+margin-left:34.5%;
+transition: .233s ease-in-out;
+}
+
+/** Main content **/
+
+div.container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin-top: 0px;
+    width: 100%;
+}
+
+div.content {
+    width: 580px;
+    height: 233px;
+    margin-top:-20px;
+    border: solid 1px #6a7e8c;
+    padding: 60px;
+    /* border-radius: 10px; */
+}
+
+div.avatar {
+    height:100%;
+    width: 31%;
+    float:left;
+    background: url('../images/photos/WATER.png');
+    background-size:cover;
+    background-position-x: center;
+    background-position-y: -20px;
+    /* border: solid 1px #6a7e8c; */
+    padding: 20px;
+    
+}
+
+div.written {
+    height:100%;
+    width: 55%;
+    text-align: center;
+    /* border: solid 1px #6a7e8c; */
+    float:right;
+    padding:20px;
+}
+
+div.written h2 {
+    font-size: 40px;
+    margin:0;
+}
+
+div.written p {
+    text-align: justify;
+}
+
+div.socialBox{
+    position: absolute;
+    top:633px;
+    width: 308px;
+    height: 50px;
+    /* border: 1px solid black; */
+    padding: 5px;
+    text-align: center;
+}
+
+div.socialBox > div {
+    width: 50px;
+    height: inherit;
+    margin: 0 12.5px 0 12.5px;
+    float:left;
+    /* border: solid 1px black; */
+    position: relative;
+    
+}
+
+div.socialBox > div > a {
+    width: inherit;
+    height: inherit;
+   display: block; 
+}
+
+div.socialBox > div:hover {
+    opacity: 0.6;
+    border-bottom: 1px solid tomato;
+}
+
+div.socialBox > div:active {
+    border-bottom: 1px solid black;
+}
+
+/** social media boxes **/
+
+.notice {}
+
+#twitter {
+    background: url('../images/icons/twitter-blue.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+#github{
+    background: url('../images/icons/Octocat.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#email{
+    background: url('../images/icons/email.svg');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#instagram{
+    background: url('../images/icons/instagram-color.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

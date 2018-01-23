@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Satch.me</title>
+		<link rel="stylesheet" href="assets/css/style.css"/>
+		<link rel="stylesheet" href="assets/css/mobile-style.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+
+		<!-- Navigation -->	
+		<nav id="nav" class="notice">
+			<ul>
+				<li id="about"><a href="#">about</a></li>
+				<!-- <li onmouseenter="triggerNotice()" onmouseleave="removeNotice()" id="projects"><a href="#"><strike>projects</strike></a></li> -->
+				<li onmouseenter="triggerNotice()" onmouseleave="removeNotice()" id="projects"><a href="satchel_french_cv.pdf">c.v.</a></li>				
+				<li id="blog"><a target="_blank" href="https://medium.com/@Satchel">writing</a></li>
+				<hr />
+			</ul>
+			<span id="notice"></span> <!-- construction notice -->
+		</nav>
+
+		
+
+		<!-- Main focus section -->
+		<div class="container">
+			<div class="content">
+				<div class="avatar"></div>
+				<div class="written">
+					<h2>Hi, I'm Satchel.</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor sed risus eu lacinia. Suspendisse nisl nibh, auctor sit amet nulla vitae, sollicitudin feugiat arcu. Duis facilisis porttitor metus, sit amet ultrices odio sodales eget.</p>
+				</div>
+			</div>
+			
+			<!-- social buttons and contact -->
+			<div class="socialBox">
+					<div id="twitter"><a target="_blank" href="https://twitter.com/satchelfrench"> </a></div>
+					<div id="instagram"><a target="_blank" href="https://instagram.com/satchelfrench"></a></div>
+					<div id="github"><a target="_blank" href="https://github.com/satchelfrench"></a></div>
+					<div id="email"><a href="mailto:frenchsatchel@gmail.com"></a></div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// functions to enable to under construction notice for projects page
+			function triggerNotice() {
+				document.getElementById("notice").innerHTML = "summary of education, projects, and work experience."
+			}
+			function removeNotice() {
+				document.getElementById("notice").innerHTML = ""
+			}
+		</script>
+	</body>
+</html>
