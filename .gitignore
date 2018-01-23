@@ -5,3 +5,5 @@
 /assets/images/psd
 .*.swp
 .*.swo
+.*.*.swp
+.*.swo
