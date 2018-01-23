@@ -6,6 +6,10 @@
         height: 600px;
     }
 
+    div.socialBox {
+        top: 600px;
+    }
+
     div.container {
         align-items: center;
         display: flex;
@@ -25,7 +29,7 @@
 
     div.avatar {
         height:40%;
-        margin: -20px 0 20px 10px;
+        margin: -30px 0 20px 10px;
         width: 100%;
         float: none;
         background: url('../images/photos/WATER.png');
