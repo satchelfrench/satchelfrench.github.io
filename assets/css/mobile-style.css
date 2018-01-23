@@ -2,6 +2,10 @@
 
 @media screen and (max-device-width: 480px), screen and (max-width: 720px)   {
 
+    body {
+        height: 600px;
+    }
+
     div.container {
         align-items: center;
         display: flex;
@@ -115,3 +119,10 @@
     }
 
 }
+
+@media screen and (max-device-width: 400px), screen and (max-width: 400px) {
+div.socialBox {position:absolute; top:650px; }
+nav > ul > li {width: 24%;}
+div.written h2 {font-size:33px;}
+}
+
