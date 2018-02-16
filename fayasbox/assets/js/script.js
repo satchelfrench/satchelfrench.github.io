@@ -1,8 +1,11 @@
 
 var phrases = [ 
+"Happy Valentines Day!",
+"Happy Valentines Day!",
+"Happy Valentines Day!",
 "You're pretty!",
 "I'll love you always",
-"1 Year and many more to go :)",
+"2 Years (almost) and many more to go :)",
 "I'm on cloud 7 when I'm with you! LOL",
 "Kitty!",
 "Boo!",
@@ -14,10 +17,7 @@ var phrases = [
 "You're extra cute today!",
 "You go girl! - Shiva",
 "Kefak Hayati?",
-"You look nice in those jeans. ;)",
-"Eyebrows on fleek",
 "You don't even need makeup",
-"Nice eyes gorgeous 0_0",
 "Nice butt.",
 "You make my day, everyday.",
 "Is there a mirror in your pocket?",
@@ -25,7 +25,6 @@ var phrases = [
 "You're the Monica to my Chandler.",
 "You're my lobster!",
 "You're the Pam to my Jim.",
-"You miss 100% of the shots you don't take!",
 "I love you.",
 "You're my sunshine."
 ];
