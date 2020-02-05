@@ -323,6 +323,14 @@ table td { border: 1px solid #e8e8e8; }
 @media screen and (min-width: 800px) { .one-half { width: calc(50% - (10px / 2)); } }
 
 /** google fonts import **/
+body.dark { background-color: #181a1b; }
+
+body.dark a, body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6, body.dark li, body.dark .logo, body.dark p, body.dark .page-link { color: white; }
+
+body.dark span.logo { border-color: white; }
+
+body.dark .highlighter-rouge { background-color: coral; }
+
 .home p { margin-bottom: 30px; }
 
 .home a { color: darkblue; }

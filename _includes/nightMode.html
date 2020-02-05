@@ -1,71 +1,30 @@
 
 <script type="text/javascript">
-
-    // On page load
-
-    var nightEnabled = readCookie('nightEnabled');
-    console.log(nightEnabled);
-    if(nightEnabled == "true") { 
-        nightEnabled = "false";
-        toggleNightMode();
-    }
-
-
-    // Function To Write Cookie
-    function setCookie(key, value) {
-        document.cookie = key + "=" + value + "; domain=satchelfrench.github.io; path=/ ";
-    }
-
-    // Function To Read Cookie  
-    function readCookie(key) { 
-        var pattern = new RegExp('(?<='+key+'\=)'+'\\w+');
-        const value = document.cookie.match(pattern);
-        // REGEX = /(?<=nightEnabled=)\w+/)
-        return value;
-    }
-
+    document.addEventListener('DOMContentLoaded',(e) => {
+        setNightMode();
+    });
+    
     // Function to actually toggle night mode
-    function toggleNightMode() {
-        // Get all DOM objects that require change
-        const page = document.querySelectorAll('p, a, h1, h2, h3, h4, h5, h6, li');
-        const highlights = document.getElementsByClassName('highlighter-rouge');
-        const logo = document.getElementsByClassName('logo')[0];
-        
+    function setNightMode() {
+        localStorage.getItem('nightEnabled');
         // If not enabled, enable and make changes
-        if (nightEnabled != "true") {
-            nightEnabled = "true";
-            console.log('enabling nightmode');
-            document.body.style.background = "rgb(24, 26, 27)";
-            logo.style.borderColor = "white";
-            logo.style.color = "white";
-            for (var i=0; i< page.length; i++ ){
-                page[i].style.color = "white";         
-            }
-
-            for (var i=0; i< highlights.length; i++ ){
-                highlights[i].style.backgroundColor = "coral";         
-            }
-
+        if (localStorage.getItem('nightEnabled') === 'true') {
+            console.log('enabling nightmode..');
+            document.querySelector('body').classList.add('dark');
         } else {
             // If enabled, disable and make changes.
-            nightEnabled = "false";
             console.log('disabling night mode..');
-            // remove added style
-            document.body.style = "";
-            logo.style = "";
-            for (var i=0; i< page.length; i++ ){
-                page[i].style.color = "";         
-            }
-            for (var i=0; i< highlights.length; i++ ){
-                highlights[i].style = "";         
-            }
+            document.querySelector('body').classList.remove('dark');   
         }
-        // Overwrite the existing cookie
-        setCookie("nightEnabled",nightEnabled);
     }
 
-
-
-    // Page Initialization / Settings
-
+    function toggleNightMode() {
+        if (localStorage.getItem('nightEnabled') === 'true') {
+            localStorage.setItem('nightEnabled', 'false');
+            setNightMode();
+        } else {
+            localStorage.setItem('nightEnabled', 'true');
+            setNightMode();
+        }
+    }
 </script>

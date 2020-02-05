@@ -2,6 +2,26 @@
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700'); /** google fonts import **/
 
+body.dark {
+    background-color: rgb(24, 26, 27);
+}
+
+body.dark a, body.dark h1, body.dark h2, 
+body.dark h3, body.dark h4, body.dark h5, body.dark h6, body.dark li,
+body.dark .logo, body.dark p, body.dark .page-link
+{
+    color: white;
+
+}
+
+body.dark span.logo {
+    border-color: white;
+}
+
+body.dark .highlighter-rouge {
+    background-color: coral;
+}
+
 .home p {
     margin-bottom:30px;
     // margin-top: 10px;
@@ -44,9 +64,6 @@ span.logo {
     margin-top: 30px;
 }
 
-.wrapper{
-   // width: 580px;
-}
 
 .post-link {
     @include relative-font-size(1);
