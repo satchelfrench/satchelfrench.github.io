@@ -1,0 +1,87 @@
+// Placeholder to allow defining custom styles that override everything else.
+// (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700'); /** google fonts import **/
+
+.home p {
+    margin-bottom:30px;
+    // margin-top: 10px;
+}
+
+.home a {
+    color: darkblue;
+
+    &:hover {
+        color: coral;
+        transition: color .7s;
+    }
+}
+
+p {
+    margin-top: 12.5px;
+    margin-bottom: 12.5px;
+}
+/** logo **/
+span.logo {
+    border: solid 3px black;
+    color: black;
+    border-radius:2px;
+    padding: 5px;
+    height: 1.3em;
+    width: auto;
+    max-width: 1.4em;
+    text-align: center;
+    font-weight: 900;
+    font-size: 20px;
+    align-self: left;
+    flex-basis: 10%;
+}
+
+.site-title:hover {
+    text-decoration: none;
+}
+
+.post-list {
+    margin-top: 30px;
+}
+
+.wrapper{
+   // width: 580px;
+}
+
+.post-link {
+    @include relative-font-size(1);
+    margin-bottom: 0px;
+}
+
+
+.site-header{
+    border:none;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+nav a:hover {
+    color: coral !important;
+    border-top: 2px solid coral;
+    transition: color 0.9s;
+    text-decoration: none;
+}
+
+.post-header {
+    margin-top: 15px;
+}
+
+.post-tags {
+    background-color: coral;
+    color: white;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 1px 6px 1px 6px;
+
+}
+
+.active-nav {
+    color: coral !important;
+    border-top: 2px solid coral;
+    text-decoration: none;
+}

@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    // configure active navivation highlighting
+    const path = window.location.href;
+    const links = document.getElementsByClassName('page-link');
+    for (var i=0; i<links.length; i++) {
+        if (links[i].href==path) {
+            var activeLink = links[i];
+            activeLink.className += " active-nav"
+
+             // when highlighting other links, temporarily remove the active heading
+            const navElement = document.getElementById('nav-box');
+            navElement.addEventListener('mouseenter', e=> {
+                activeLink.className = "page-link";
+            });
+            navElement.addEventListener('mouseleave', e=> {
+                activeLink.className += " active-nav"
+            });
+
+        }
+    }
+</script>

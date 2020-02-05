@@ -1,0 +1,132 @@
+/** for mobile phones and small windows **/
+
+@media screen and (max-device-width: 480px), screen and (max-width: 720px)   {
+
+    body {
+        height: 600px;
+    }
+
+    div.socialBox {
+        top: 600px;
+    }
+
+    div.container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 95%;
+        width: 100%;
+        margin-top:100px;
+        min-height:500px;
+    }
+
+    div.content {
+        width: 100%;
+        height: calc(100% - 100px);
+        border: none;
+        margin-left:-40px;
+    }
+
+    div.avatar {
+        height:40%;
+        margin: -30px 0 20px 10px;
+        width: 100%;
+        float: none;
+        background: url('../images/photos/WATER.png');
+        background-size:contain;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        /* border: solid 1px #6a7e8c; */
+        
+    }
+
+    div.written {
+        height:auto;
+        width: 100%;
+        text-align: center;
+        /* border: solid 1px #6a7e8c; */
+        float:none;
+        padding:20px;
+    }
+
+    div.written h2 {
+        border: solid 1px #6a7e8c;
+    }
+
+    nav {
+        position: absolute;
+        top:0;
+        height: 100px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav > ul {
+        list-style-type: none;
+        display: inline-block;
+        width: 100%;
+        padding:0;
+    }
+
+    nav > ul > li {
+        
+        height:100%;
+        border: solid 1px black;
+        width: 25%;
+        margin: .5%;
+        padding: 10px;
+    }
+    
+    nav > ul > li:active {
+        background: tomato;
+        border: none;
+        padding: 11px;
+    }
+
+    nav > ul > li:hover {
+        background: tomato;
+        border: none;
+        padding: 11px;
+    }
+
+    nav > ul > li > a {
+        text-decoration: none;
+        color: black;
+        font-weight: 900;
+        display:block;
+    }
+
+    nav > ul > li:active > a {
+        color:white !important;
+    }
+    
+    nav a:visited{
+        color:black;
+    }
+    
+    #about:hover ~ hr {
+        margin-left: 0;
+        }
+        
+    #projects:hover ~ hr {
+    margin-left: 0;
+    }
+    
+    #blog:hover ~ hr {
+    margin-left: 0;
+    }
+    
+    hr {
+    height: 0;
+    width: 0;
+    border: none;
+    }
+
+}
+
+@media screen and (max-device-width: 400px), screen and (max-width: 400px) {
+div.socialBox {position:absolute; top:650px; }
+nav > ul > li {width: 24%;}
+div.written h2 {font-size:33px;}
+}
+
