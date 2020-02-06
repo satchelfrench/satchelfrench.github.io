@@ -11,10 +11,12 @@
         if (localStorage.getItem('nightEnabled') === 'true') {
             console.log('enabling nightmode..');
             document.querySelector('body').classList.add('dark');
+            document.getElementById('nightModeButton').src = "{{site.baseurl}}/assets/images/icons/night-color.png";
         } else {
             // If enabled, disable and make changes.
             console.log('disabling night mode..');
-            document.querySelector('body').classList.remove('dark');   
+            document.querySelector('body').classList.remove('dark'); 
+            document.getElementById('nightModeButton').src = "{{site.baseurl}}/assets/images/icons/night.png";  
         }
     }
 

@@ -14,6 +14,20 @@ body.dark .logo, body.dark p, body.dark .page-link
 
 }
 
+#nightModeButton {
+    filter:grayscale(1);
+    padding-top: 5px;
+}
+
+#nightModeButton:hover {
+    filter: grayscale(0);
+    padding-top: 3px;
+    color: coral !important;
+    border-top: 2px solid coral;
+    transition: color 0.9s;
+    text-decoration: none;
+}
+
 body.dark span.logo {
     border-color: white;
 }

@@ -32,7 +32,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/projects/">projects</a><a class="page-link" href="/articles/">articles</a></div>
+        <div class="trigger"><a class="page-link" href="/projects/">projects</a><a class="page-link" href="/articles/">articles</a><img width="24px" id="nightModeButton" src="/assets/images/icons/night.png" alt="Toggle Night Mode!" onclick="toggleNightMode()" />
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -77,8 +77,7 @@
     </div>
 
     <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/jekyll" title="jekyll"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/jekyllrb" title="jekyllrb"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
-<button onclick="toggleNightMode()">night mode</button>
-    </div>
+</div>
 
   </div>
 
@@ -117,10 +116,12 @@
         if (localStorage.getItem('nightEnabled') === 'true') {
             console.log('enabling nightmode..');
             document.querySelector('body').classList.add('dark');
+            document.getElementById('nightModeButton').src = "/assets/images/icons/night-color.png";
         } else {
             // If enabled, disable and make changes.
             console.log('disabling night mode..');
-            document.querySelector('body').classList.remove('dark');   
+            document.querySelector('body').classList.remove('dark'); 
+            document.getElementById('nightModeButton').src = "/assets/images/icons/night.png";  
         }
     }
 
