@@ -7,8 +7,8 @@ description: > # this means to ignore newlines until "show_excerpts:"
 
 show_excerpts: false # set to true to show excerpts on the homepage
 
-disqus:
-  shortname: satch-me
+# disqus:
+#   shortname: satch-me
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 minima:
@@ -16,14 +16,14 @@ minima:
 
   # generate social links in footer
   social_links:
-    twitter: satchelfrench
+    # twitter: satchelfrench
     github:  satchelfrench
     rss: rss
     # devto: jekyll
     # dribbble: jekyll
     # facebook: jekyll
     # flickr:   jekyll
-    instagram: jekyll
+    instagram: satchelfrench
     linkedin: satchelfrench
     # pinterest: jekyll
     # youtube: jekyll
