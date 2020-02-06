@@ -14,6 +14,10 @@ body.dark .logo, body.dark p, body.dark .page-link
 
 }
 
+body {
+    padding: 0 20px 0 20px;
+}
+
 #nightModeButton {
     filter:grayscale(1);
     padding-top: 5px;
@@ -115,4 +119,23 @@ nav a:hover {
     color: coral !important;
     border-top: 2px solid coral;
     text-decoration: none;
+
+}
+
+.site-nav {
+    background-color: coral;
+}
+
+// Mobile Styles
+
+@include media-query($on-palm) {
+    .site-header{
+        margin-top: 25px;
+        margin-bottom: 0px;
+    }
+}
+
+.trigger {
+    background-color: coral;
+    
 }

@@ -215,7 +215,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .site-title, .site-title:visited { color: #424242; }
 
-.site-nav { position: absolute; top: 9px; right: 5px; background-color: #fdfdfd; border: 1px solid #e8e8e8; border-radius: 5px; text-align: right; }
+.site-nav { position: absolute; top: 9px; right: 5px; background-color: #fdfdfd; border-radius: 5px; text-align: right; }
 
 .site-nav .nav-trigger { display: none; }
 
@@ -327,6 +327,8 @@ body.dark { background-color: #181a1b; }
 
 body.dark a, body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6, body.dark li, body.dark .logo, body.dark p, body.dark .page-link { color: white; }
 
+body { padding: 0 20px 0 20px; }
+
 #nightModeButton { filter: grayscale(1); padding-top: 5px; }
 
 #nightModeButton:hover { filter: grayscale(0); padding-top: 3px; color: coral !important; border-top: 2px solid coral; transition: color 0.9s; text-decoration: none; }
@@ -361,5 +363,11 @@ nav a:hover { color: coral !important; border-top: 2px solid coral; transition: 
 .post-tags { background-color: coral; color: white; margin-left: 3px; margin-right: 3px; padding: 1px 6px 1px 6px; }
 
 .active-nav { color: coral !important; border-top: 2px solid coral; text-decoration: none; }
+
+.site-nav { background-color: coral; }
+
+@media screen and (max-width: 600px) { .site-header { margin-top: 25px; margin-bottom: 0px; } }
+
+.trigger { background-color: coral; }
 
 /*# sourceMappingURL=style.css.map */
