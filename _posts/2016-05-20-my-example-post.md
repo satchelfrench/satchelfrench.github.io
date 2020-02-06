@@ -1,6 +1,7 @@
 ---
 title: "some example post"
 tags: ["deep learning", "software"]
+comments: true
 layout: post
 ---
 
