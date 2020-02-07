@@ -45,12 +45,21 @@ nav a {
 
 nav a:visited{
     color: rgb(218, 215, 210);
+    outline:none;
 }
 
 nav > ul > li {
     display: inline-block;
-    padding: 0 10px 0 0;
+    padding: 0 5px 0 5px;
 }
+nav .active {
+    border-top: 2px solid coral;
+}
+
+nav .active a {
+    color: coral;
+}
+
 
 nav a:hover {
     color: coral;

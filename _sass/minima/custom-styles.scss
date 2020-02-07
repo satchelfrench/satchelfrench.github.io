@@ -122,10 +122,6 @@ nav a:hover {
 
 }
 
-.site-nav {
-    background-color: coral;
-}
-
 // Mobile Styles
 
 @include media-query($on-palm) {
@@ -133,9 +129,29 @@ nav a:hover {
         margin-top: 25px;
         margin-bottom: 0px;
     }
-}
 
-.trigger {
-    background-color: coral;
-    
+    .site-nav {
+        border-radius: 0px;
+        background-color: #F0F0F0;
+    }
+
+    body.dark .trigger {
+        background-color: #444;
+    }
+
+    .menu-icon {
+        background-color: #F0F0F0;
+    }
+
+    #nightModeButton {
+        margin-left: 15px;
+    }
+
+    .trigger {
+        background-color: #ebebeb;
+        padding: 10px 15px 0 0;
+        text-align: center;
+    }
+
+
 }

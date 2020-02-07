@@ -18,14 +18,16 @@
 		
 		<div class="container"> <!-- Flexbox container -->
 			<div class="header">
-				<span class="logo">s.f.</span> <!-- Logo -->
+				<span id="logoHome" class="logo">s.f.</span> <!-- Logo -->
 				<!-- Navigation -->
 				<nav id="nav">
+
 					<ul>
-						<li id="about"><a href="#">about</a></li>
+						<li id="about" class="active"><a href="/">about</a></li>
 						<li id="projects"><a target="_blank" href="/projects">projects</a></li>			
 						<li id="writing"><a target="_blank" href="/articles">writing</a></li>
 					</ul>
+					
 				</nav>	 
 			</div> 
 			
@@ -50,6 +52,6 @@
 			
 
 		</div>
-	</script> 
+	{%- include navActive.html -%}
 	</body>
 </html>

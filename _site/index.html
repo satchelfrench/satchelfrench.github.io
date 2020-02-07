@@ -18,14 +18,16 @@
 		
 		<div class="container"> <!-- Flexbox container -->
 			<div class="header">
-				<span class="logo">s.f.</span> <!-- Logo -->
+				<span id="logoHome" class="logo">s.f.</span> <!-- Logo -->
 				<!-- Navigation -->
 				<nav id="nav">
+
 					<ul>
-						<li id="about"><a href="#">about</a></li>
+						<li id="about" class="active"><a href="/">about</a></li>
 						<li id="projects"><a target="_blank" href="/projects">projects</a></li>			
 						<li id="writing"><a target="_blank" href="/articles">writing</a></li>
 					</ul>
+					
 				</nav>	 
 			</div> 
 			
@@ -49,7 +51,26 @@
 			</div>
 			
 
-		</div>
-	</script> 
-	</body>
+		</div><script type="text/javascript">
+    // configure active navivation highlighting
+    const path = window.location.href;
+    const links = document.getElementsByClassName('page-link');
+    for (var i=0; i<links.length; i++) {
+        if (links[i].href==path) {
+            var activeLink = links[i];
+            activeLink.className += " active-nav"
+
+             // when highlighting other links, temporarily remove the active heading
+            const navElement = document.getElementById('nav-box');
+            navElement.addEventListener('mouseenter', e=> {
+                activeLink.className = "page-link";
+            });
+            navElement.addEventListener('mouseleave', e=> {
+                activeLink.className += " active-nav"
+            });
+
+        }
+    }
+</script>
+</body>
 </html>
