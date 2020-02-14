@@ -21,6 +21,14 @@ background-color: rgb(24, 26, 27);
 color: rgb(218, 215, 210);
 }
 
+a {
+    color: coral;
+}
+
+a:visited {
+    color: coral;
+}
+
 /** Navigation **/
 
 nav {
