@@ -23,7 +23,7 @@ layout: default
     <!-- List articles -->
     <ul class="post-list">
       {%- assign date_format = "%b %d %Y" -%}
-      {%- for post in posts -%}
+      {%- for post in posts reversed -%}
       
       <li>
         {{ post.subject }}      
