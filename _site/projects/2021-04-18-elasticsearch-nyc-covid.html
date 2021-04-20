@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Analyzing NYC 311 Calls with ElasticSearch | Satchel’s Lab</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Analyzing NYC 311 Calls with ElasticSearch" />
+<meta name="author" content="Satchel French" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I work on fun things." />
+<meta property="og:description" content="I work on fun things." />
+<meta property="og:site_name" content="Satchel’s Lab" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-18T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Analyzing NYC 311 Calls with ElasticSearch" />
+<script type="application/ld+json">
+{"dateModified":"2021-04-18T00:00:00-04:00","datePublished":"2021-04-18T00:00:00-04:00","url":"/projects/2021-04-18-elasticsearch-nyc-covid.html","mainEntityOfPage":{"@type":"WebPage","@id":"/projects/2021-04-18-elasticsearch-nyc-covid.html"},"author":{"@type":"Person","name":"Satchel French"},"description":"I work on fun things.","@type":"BlogPosting","headline":"Analyzing NYC 311 Calls with ElasticSearch","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Satchel's Lab" /><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><span class="logo">s.f.</span></a><nav class="site-nav" id="nav-box">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="/">about</a><a class="page-link" href="/projects/">projects</a><a class="page-link" href="/articles/">articles</a><img width="24px" id="nightModeButton" src="/assets/images/icons/night.png" alt="Toggle Night Mode!" onclick="toggleNightMode()" />
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<a href="/projects"><-- projects</a>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Analyzing NYC 311 Calls with ElasticSearch</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2021-04-18T00:00:00-04:00" itemprop="datePublished">
+        Apr 18, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Satchel French</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <hr />
+<p><br /></p>
+
+<p>Big Data is becoming a huge part of the modern world, and the ability to quickly sift through it and discover insights is becoming more and more valuable. <a href="https://www.elastic.co">ElasticSearch</a> NoSQL document store used for creating and anylzing scalable, searchable, data warehouses. It is used by the likes of Wikipedia, Netflix, Uber, and many more of todays largest tech companies.</p>
+
+<p>Today I’ll just be playing around with it, setting up a google cloud serrver and running some queries. In a future post I may show how to create a visualization board in Kibana.</p>
+
+<p>⚠️ <span style="color:orange"><em>Warning: This is not intended to be an in-depth tutorial for an absolute beginner. It is however an example of <u>working with the garage door open</u> and I think novices may still find value in it.</em></span></p>
+
+<p><br /></p>
+<h3 id="setup-and-start">Setup and Start</h3>
+
+<p>First of all you’ll need to get the ELK stack up and running (ElasticSearch, Logstash, Kibana). Here are some great resources for getting started witht he basics:</p>
+<ul>
+  <li><a href="https://github.com/tofighi/tutorials/tree/master/elk2">Configuration Tutorial</a></li>
+  <li><a href="https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html">Setting Up a Logstash Pipeline Configuration File</a></li>
+  <li><a href="https://www.kaggle.com/pablomonleon/311-service-requests-nyc">Download the Dataset</a></li>
+</ul>
+
+<p><br /></p>
+<h3 id="making-some-queries">Making some Queries</h3>
+
+<p>ElasticSearch is different from SQL based analysis in that it makes all of its requests in JSON. Personally I learn best by example, so I’ve listed some desired queries and their corresponding ElasticSearch JSON.</p>
+
+<p><br /></p>
+<h4 id="question-1">Question 1</h4>
+<p><em>“Display <strong>count</strong> of all the documents in the nyc311calls index”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/_count</span><span class="w">
+</span></code></pre></div></div>
+
+<p><br /></p>
+<h4 id="question-2">Question 2</h4>
+<p><em>“Display <strong>count</strong> of all calls with the word <strong>“heat” in descriptor</strong> in the nyc311calls index”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/calls/_count</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"match"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"Descriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"heat"</span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><br /></p>
+<h4 id="question-3">Question 3</h4>
+<p><em>“Write an <strong>aggregation</strong> to show the top 10 cities with the highest number of calls”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/calls/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"group_by_city"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City.keyword"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><strong>Notes</strong>:
+    <ul>
+      <li><em>Size defaults to 10</em></li>
+      <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-request-from-size.html">Documentation for from/size</a></li>
+      <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html">Documentation for term size</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+<h4 id="question-4">Question 4</h4>
+<p><em>“Write a query to see the status of all cases ina given borough.”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/calls/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"match"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BROOKLYN"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"group_by_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status.keyword"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+  </div><a class="u-url" href="/projects/2021-04-18-elasticsearch-nyc-covid.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" target="_blank" href="https://github.com/satchelfrench" title="satchelfrench"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" target="_blank" href="https://www.instagram.com/satchelfrench" title="satchelfrench"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#instagram"></use></svg></a></li><li><a rel="me" target="_blank" href="https://www.linkedin.com/in/satchelfrench" title="satchelfrench"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a target="_blank" href="/feed.xml" title="rss"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+<script type="text/javascript">
+    // configure active navivation highlighting
+    const path = window.location.href;
+    const links = document.getElementsByClassName('page-link');
+    for (var i=0; i<links.length; i++) {
+        if (links[i].href==path) {
+            var activeLink = links[i];
+            activeLink.className += " active-nav"
+
+             // when highlighting other links, temporarily remove the active heading
+            const navElement = document.getElementById('nav-box');
+            navElement.addEventListener('mouseenter', e=> {
+                activeLink.className = "page-link";
+            });
+            navElement.addEventListener('mouseleave', e=> {
+                activeLink.className += " active-nav"
+            });
+
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded',(e) => {
+        setNightMode();
+    });
+    
+    // Function to actually toggle night mode
+    function setNightMode() {
+        localStorage.getItem('nightEnabled');
+        // If not enabled, enable and make changes
+        if (localStorage.getItem('nightEnabled') === 'true') {
+            console.log('enabling nightmode..');
+            document.querySelector('body').classList.add('dark');
+            document.getElementById('nightModeButton').src = "/assets/images/icons/night-color.png";
+        } else {
+            // If enabled, disable and make changes.
+            console.log('disabling night mode..');
+            document.querySelector('body').classList.remove('dark'); 
+            document.getElementById('nightModeButton').src = "/assets/images/icons/night.png";  
+        }
+    }
+
+    function toggleNightMode() {
+        if (localStorage.getItem('nightEnabled') === 'true') {
+            localStorage.setItem('nightEnabled', 'false');
+            setNightMode();
+        } else {
+            localStorage.setItem('nightEnabled', 'true');
+            setNightMode();
+        }
+    }
+</script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window['ga-disable-'] = window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1";
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script> -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83972220-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83972220-2');
+</script>
+</body>
+
+</html>

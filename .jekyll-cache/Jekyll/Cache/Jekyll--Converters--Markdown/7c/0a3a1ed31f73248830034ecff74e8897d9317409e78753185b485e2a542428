@@ -1,0 +1,94 @@
+I"�<hr />
+<p><br /></p>
+
+<p>Big Data is becoming a huge part of the modern world, and the ability to quickly sift through it and discover insights is becoming more and more valuable. <a href="https://www.elastic.co">ElasticSearch</a> NoSQL document store used for creating and anylzing scalable, searchable, data warehouses. It is used by the likes of Wikipedia, Netflix, Uber, and many more of todays largest tech companies.</p>
+
+<p>Today I’ll just be playing around with it, setting up a google cloud serrver and running some queries. In a future post I may show how to create a visualization board in Kibana.</p>
+
+<p>⚠️ <span style="color:orange"><em>Warning: This is not intended to be an in-depth tutorial for an absolute beginner. It is however an example of <u>working with the garage door open</u> and I think novices may still find value in it.</em></span></p>
+
+<p><br /></p>
+<h3 id="setup-and-start">Setup and Start</h3>
+
+<p>First of all you’ll need to get the ELK stack up and running (ElasticSearch, Logstash, Kibana). Here are some great resources for getting started witht he basics:</p>
+<ul>
+  <li><a href="https://github.com/tofighi/tutorials/tree/master/elk2">Configuration Tutorial</a></li>
+  <li><a href="https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html">Setting Up a Logstash Pipeline Configuration File</a></li>
+  <li><a href="https://www.kaggle.com/pablomonleon/311-service-requests-nyc">Download the Dataset</a></li>
+</ul>
+
+<p><br /></p>
+<h3 id="making-some-queries">Making some Queries</h3>
+
+<p>ElasticSearch is different from SQL based analysis in that it makes all of its requests in JSON. Personally I learn best by example, so I’ve listed some desired queries and their corresponding ElasticSearch JSON.</p>
+
+<p><br /></p>
+<h4 id="question-1">Question 1</h4>
+<p><em>“Display <strong>count</strong> of all the documents in the nyc311calls index”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/_count</span><span class="w">
+</span></code></pre></div></div>
+
+<p><br /></p>
+<h4 id="question-2">Question 2</h4>
+<p><em>“Display <strong>count</strong> of all calls with the word <strong>“heat” in descriptor</strong> in the nyc311calls index”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/calls/_count</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"match"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"Descriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"heat"</span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><br /></p>
+<h4 id="question-3">Question 3</h4>
+<p><em>“Write an <strong>aggregation</strong> to show the top 10 cities with the highest number of calls”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/calls/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"group_by_city"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City.keyword"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><strong>Notes</strong>:
+    <ul>
+      <li><em>Size defaults to 10</em></li>
+      <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-request-from-size.html">Documentation for from/size</a></li>
+      <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html">Documentation for term size</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+<h4 id="question-4">Question 4</h4>
+<p><em>“Write a query to see the status of all cases ina given borough.”</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET</span><span class="w"> </span><span class="err">/nyc</span><span class="mi">311</span><span class="err">calls/calls/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"match"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BROOKLYN"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"group_by_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status.keyword"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+:ET
