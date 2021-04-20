@@ -1,2 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-04-19T13:56:00-04:00</updated><id>/feed.xml</id><title type="html">Satchel’s Lab</title><subtitle>I work on fun things.
-</subtitle><author><name>Satchel French</name><email>frenchsatchel@gmail.com</email></author><entry><title type="html">Still under construction!</title><link href="/2021/04/13/construction.html" rel="alternate" type="text/html" title="Still under construction!" /><published>2021-04-13T00:00:00-04:00</published><updated>2021-04-13T00:00:00-04:00</updated><id>/2021/04/13/construction</id><content type="html" xml:base="/2021/04/13/construction.html">&lt;p&gt;You’ll have to pardon the lack of content, I’m currently doing a refresh of all articles and projects. Expect update this before the end of May. In the meantime, you can always subscribe to my &lt;a href=&quot;/feed.xml&quot;&gt;rss&lt;/a&gt; to stay updated.&lt;/p&gt;</content><author><name>Satchel French</name><email>frenchsatchel@gmail.com</email></author><category term="update" /><category term="temporary" /><summary type="html">You’ll have to pardon the lack of content, I’m currently doing a refresh of all articles and projects. Expect update this before the end of May. In the meantime, you can always subscribe to my rss to stay updated.</summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-04-20T15:09:37-04:00</updated><id>/feed.xml</id><title type="html">Satchel’s Lab</title><subtitle>I work on fun things.
+</subtitle><author><name>Satchel French</name><email>frenchsatchel@gmail.com</email></author><entry><title type="html">Useful Behavioral Friction</title><link href="/2021/04/18/useful-friction.html" rel="alternate" type="text/html" title="Useful Behavioral Friction" /><published>2021-04-18T00:00:00-04:00</published><updated>2021-04-18T00:00:00-04:00</updated><id>/2021/04/18/useful-friction</id><content type="html" xml:base="/2021/04/18/useful-friction.html">&lt;p&gt;Friction is a fundamental feature of our universe, dictating how much work is required to move an object in a given direction.&lt;/p&gt;
+
+&lt;p&gt;I’m interested in the idea of behavioral friction; how easy or difficult it is to fall into a given behavior.&lt;/p&gt;
+
+\[F = \mu m a\]
+
+&lt;p&gt;&lt;strong&gt;Friction has three components:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;\(m\) is the mass of behavior, in other words – how large is the task?&lt;/li&gt;
+  &lt;li&gt;\(a\) is the acceleration, or how much momentum and work are you putting into this?&lt;/li&gt;
+  &lt;li&gt;\(\mu\) is the coefficient of friction, which quantifies how your environment is impacting the amount of friction.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Vices typically have very low friction, (very low \(\mu\), small \(m\) and can have lots of acceleration \(a\)).&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;i.e. Watching Television
+	- small \(\mu\): television remote is within reach, one button press from away
+	- small \(m\): It’s not some large task, its sitting down watching tv
+	- large \(a\): If you’ve built the habit of bingeing shows, or watching sports, you have a lot of momentum going into this.&lt;/li&gt;
+  &lt;li&gt;Can apply to things like: Video games, eating snacks from the fridge.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;In other words, the force required to accelerate the behaviour is very small and thus easy.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Aspirations typically have very high friction (high \(\mu\), large \(m\) and low \(a\))&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;i.e. Run a marathon
+    &lt;ul&gt;
+      &lt;li&gt;large \(\mu\), what trigger are there to encourage you to run when you’re at home? (\(\mu\) is large by default)&lt;/li&gt;
+      &lt;li&gt;large \(m\) – the task is too large to move in one move (needs to be smaller)&lt;/li&gt;
+      &lt;li&gt;small \(a\) –– if you’re already not running often, there isn’t much wind at your back, and it requires a fair bit of work to start&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Friction can however be used to anyone’s advantage&lt;/strong&gt;, you simply want to &lt;strong&gt;add friction&lt;/strong&gt; to &lt;strong&gt;undesirable behaviors&lt;/strong&gt; and &lt;strong&gt;reduce friction&lt;/strong&gt; between &lt;strong&gt;desired behaviors&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;i.e. Reducing Television Watch Time
+    &lt;ul&gt;
+      &lt;li&gt;increase \(\mu\), move the TV remote to a distance corner of your home, unplug the television, get a cabinet to cover it and remove the trigger.&lt;/li&gt;
+      &lt;li&gt;increase \(m\), make watching TV a larger task – for example you have to watch 1 hour of lecture before you allow yourself any television.&lt;/li&gt;
+      &lt;li&gt;reduce \(a\), try to quit watching TV for one week, avoid binge-ing content. This will slow your momentum.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;i.e. Start Running a Marathon
+    &lt;ul&gt;
+      &lt;li&gt;increase \(\mu\), put your running shoes and exercise clothes by the front door as a trigger. Add running posters or posted notes around the house to remind yourself&lt;/li&gt;
+      &lt;li&gt;reduce \(m\), a marathon is a big goal, maybe start with something approachable like 10 minutes of running at a comfortable pace for a week.&lt;/li&gt;
+      &lt;li&gt;increase \(a\) – create momentum, going a running club, create accountability, try to make it a habit.
+&lt;br /&gt;
+&lt;br /&gt;
+I think this is a fun way to think about how one might go about changing a behaviour, just remember — it’s basic physics.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Satchel French</name></author><category term="concepts" /><category term="growth" /><summary type="html">Friction is a fundamental feature of our universe, dictating how much work is required to move an object in a given direction.</summary></entry><entry><title type="html">Still under construction!</title><link href="/2021/04/13/construction.html" rel="alternate" type="text/html" title="Still under construction!" /><published>2021-04-13T00:00:00-04:00</published><updated>2021-04-13T00:00:00-04:00</updated><id>/2021/04/13/construction</id><content type="html" xml:base="/2021/04/13/construction.html">&lt;p&gt;You’ll have to pardon the lack of content, I’m currently doing a refresh of all articles and projects. Expect update this before the end of May. In the meantime, you can always subscribe to my &lt;a href=&quot;/feed.xml&quot;&gt;rss&lt;/a&gt; to stay updated.&lt;/p&gt;</content><author><name>Satchel French</name><email>frenchsatchel@gmail.com</email></author><category term="update" /><category term="temporary" /><summary type="html">You’ll have to pardon the lack of content, I’m currently doing a refresh of all articles and projects. Expect update this before the end of May. In the meantime, you can always subscribe to my rss to stay updated.</summary></entry></feed>

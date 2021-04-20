@@ -211,3 +211,7 @@ span.logo {
 
 ** resolve nav a:active
 */
+
+ul {
+    list-style-position:outside;
+}
