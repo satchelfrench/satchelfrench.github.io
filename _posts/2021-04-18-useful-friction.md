@@ -1,6 +1,6 @@
 ---
 title: "Useful Behavioral Friction"
-tags: ["concepts", "growth"]
+tags: ["habits", "personal growth"]
 comments: true
 author: "Satchel French"
 layout: post
